@@ -1,2 +1,2 @@
-# 1Year-2Semester-python
+# Learning python
 
