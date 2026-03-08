@@ -29,7 +29,7 @@ def meat(func):
 @meat
 @bread
 def make_sandwich():
-    return
+    pass
 
 def main():
     make_sandwich()
