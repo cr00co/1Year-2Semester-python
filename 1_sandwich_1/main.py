@@ -1,17 +1,35 @@
 def bread(func):
-    pass
+    def wrapper(*args, **kwargs):
+        print('Bread')
+        func()
+    return wrapper
 
 def salat(func):
-    pass
+    def wrapper(*args, **kwargs):
+        print('Salat')
+        func()
+    return wrapper
 
 def tomato(func):
-    pass
+    def wrapper(*args, **kwargs):
+        print('Tomato')
+        func()
+    return wrapper
+    
 
 def meat(func):
-    pass
-
+    def wrapper(*args, **kwargs):
+        print('Meat')
+        func()
+    return wrapper
+    
+@bread
+@salat
+@tomato
+@meat
+@bread
 def make_sandwich():
-    pass
+    return
 
 def main():
     make_sandwich()
