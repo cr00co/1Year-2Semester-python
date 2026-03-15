@@ -206,4 +206,57 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# General macOS system files
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon files that store custom view settings
+Icon
+
+# Thumbnail cache files
+._*
+
+# Files created by Finder and some editors
+.DS_Store?
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Folder with app-specific user settings
+*.localized
+
+# Spotlight index
+.Spotlight-V100
+.Trashes
+
+# Network folders
+.Network Trash Folder
+.TemporaryItems
+
+# Time Machine backups
+.backup
+
+# Xcode files (if you do iOS/macOS development)
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# IDE files (PyCharm, VS Code, etc.)
+.idea/
+*.iml
+.vscode/
+
+# Python cache files (common for Python projects)
+__pycache__/
+*.py[cod]
+*$py.class
