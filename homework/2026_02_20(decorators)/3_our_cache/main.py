@@ -1,11 +1,11 @@
 def cache(func):
     storage = {}
     
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
+        key = (args, tuple(sorted(kwargs.items())))
         if args not in storage:
-            storage[args] = func(*args)
-            print("added:", args, storage[args])
-        return storage[args]
+            storage[key] = func(*args, **kwargs)
+        return storage[key]
     
     return wrapper
 
@@ -20,8 +20,8 @@ def fib(n):
     return fib(n-1) + fib(n-2)
 
 if __name__ == "__main__":
-    print(my_sum(1, 2))
-    print(my_sum(1, 2))
+    print(my_sum(a=1, b=2))
+    print(my_sum(1, b=2))
     print(my_sum(42, 42))
     print(my_sum(42, 42))
 
