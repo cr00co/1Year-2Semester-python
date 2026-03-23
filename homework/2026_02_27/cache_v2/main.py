@@ -2,7 +2,7 @@ import pickle
 import os
 import functools
 
-def cache(filename, use_kwargs=False):
+def cache_v2(filename, use_kwargs=False):
     def decorator(func):
         cache = {}
         if os.path.exists(filename):
@@ -23,7 +23,7 @@ def cache(filename, use_kwargs=False):
         return wrapper
     return decorator
 
-@cache("2026_02_27/cache_v2/my_cache.pkl")
+@cache_v2("2026_02_27/cache_v2/my_cache.pkl")
 def fib(n):
     if n <= 1:
         return n
