@@ -1,31 +1,36 @@
-import pickle
+import json
 import os
-import functools
 
-def cache_v2(filename, use_kwargs=False):
+def cache(filename, use_named=False):
     def decorator(func):
-        cache = {}
-        if os.path.exists(filename):
-            with open(filename, "rb") as f:
-                cache = pickle.load(f)
-        
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            key = tuple(sorted(kwargs.items())) if use_kwargs else args
+        storage = {}
 
-            if key not in cache:
-                cache[key] = func(*args, **kwargs)
-                with open(filename, "wb") as f:
-                    pickle.dump(cache, f)
-            
-            return cache[key]
-        
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                storage = json.load(f)
+
+        def wrapper(*args, **kwargs):
+            if use_named:
+                key = str(tuple(sorted(kwargs.items())))
+            elif len(args) == 1:
+                key = str(args[0])
+            else:
+                key = str(args)
+
+            if key not in storage:
+                storage[key] = func(*args, **kwargs)
+                with open(filename, 'w') as f:
+                    json.dump(storage, f)
+
+            return storage[key]
+
         return wrapper
     return decorator
 
-@cache_v2("2026_02_27/cache_v2/my_cache.pkl")
+
+@cache('2026_02_27/cache_v2/cache.json')
 def fib(n):
-    if n <= 1:
+    if n < 2:
         return n
     return fib(n - 1) + fib(n - 2)
 
@@ -33,10 +38,3 @@ if __name__ == "__main__":
     print("|Fibonacci sequence calc|")
     n = int(input("Enter number of the element: "))
     print(f"Value of the {n} element: {fib(n)}")
-    
-    print("\nThe data in the cache file:")
-    with open("2026_02_27/cache_v2/my_cache.pkl", "rb") as f:
-        cache = pickle.load(f)
-    
-    for key, value in cache.items():
-        print(f"{key[0]} - {value}")
