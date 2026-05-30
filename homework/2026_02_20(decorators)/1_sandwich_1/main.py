@@ -16,7 +16,6 @@ def tomato(func):
         func()
     return wrapper
     
-
 def meat(func):
     def wrapper(*args, **kwargs):
         print('Meat')
