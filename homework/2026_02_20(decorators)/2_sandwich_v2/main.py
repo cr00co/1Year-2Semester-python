@@ -1,20 +1,20 @@
 def bread(func):
-    def wrapper(*args, **kwargs):
+    def wrapper():
         return "Bread\n" + func() + "Bread"
     return wrapper
 
 def salat(func):
-    def wrapper(*args, **kwargs):
+    def wrapper():
         return "Salat\n" + func()
     return wrapper
 
 def tomato(func):
-    def wrapper(*args, **kwargs):
+    def wrapper():
         return "Tomato\n" + func()
     return wrapper
 
 def meat(func):
-    def wrapper(*args, **kwargs):
+    def wrapper():
         return "Meat\n" + func()
     return wrapper
 
